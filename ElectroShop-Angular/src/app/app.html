@@ -1,0 +1,67 @@
+<div class="page">
+  <header class="store-header">
+    <h1>{{ storeName }}</h1>
+    <p>{{ storeDescription }}</p>
+  </header>
+
+  <div class="separator" aria-hidden="true"></div>
+
+  <main class="store-card">
+    <p class="store-status" [class.closed]="!isStoreOpen">{{ m }}</p>
+
+    <section class="featured-section">
+      <h2>Featured Product</h2>
+      <div class="featured-details">
+        <h3>{{ featuredProduct.name }}</h3>
+        <p>High-performance laptop</p>
+        <div class="price-line">
+          <span class="original-price">${{ featuredProduct.price }}</span>
+          <strong class="sale-price">${{ featuredProduct.price * (1 - discountPercentage) }}</strong>
+          <strong class="discount">{{ discountPercentage * 100 }}% Discount</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="products-section">
+      <h2>Our Products</h2>
+      <table class="products-table">
+        <tbody>
+          <tr>
+            <th>{{ productNames[1] }}</th>
+            <th>{{ productNames[2] }}</th>
+            <th>{{ productNames[3] }}</th>
+            <th>{{ productNames[4] }}</th>
+          </tr>
+          <tr>
+            <td>${{ productPrices[1] }}</td>
+            <td>${{ productPrices[2] }}</td>
+            <td>${{ productPrices[3] }}</td>
+            <td>${{ productPrices[4] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="summary-section">
+      <h2>Store Summary</h2>
+      <table class="summary-table">
+        <tbody>
+          <tr>
+            <td>{{ Totalnumofproducts }}</td>
+            <td>${{ Most_expensive }}</td>
+            <td>${{ Cheapest_product }}</td>
+            <td>${{ Totalvalue }}</td>
+          </tr>
+          <tr>
+            <th>Total Products</th>
+            <th>Highest Price</th>
+            <th>Lowest Price</th>
+            <th>Total Products Value</th>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <p class="note">Illustrative layout – students should implement it using the topics covered.</p>
+  </main>
+</div>
