@@ -1,0 +1,16 @@
+:host { display: block; }
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px 24px;
+  padding: 22px 48px;
+  color: #d8e5fb;
+  background: #102d65;
+  font-size: 13px;
+}
+
+p { margin: 0; }
+
+@media (max-width: 640px) { footer { padding: 22px 20px; flex-direction: column; } }

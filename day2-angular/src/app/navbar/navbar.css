@@ -1,0 +1,24 @@
+:host {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px 48px;
+  background: #f8faff;
+  border-bottom: 1px solid var(--line);
+}
+
+p { order: 2; flex: 1 0 100%; margin: 5px 0 0; color: var(--muted); font-size: 13px; }
+
+button {
+  padding: 9px 16px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: #46566e;
+  background: transparent;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color .18s ease, background .18s ease;
+}
+
+button:hover { color: var(--brand); background: #eaf1ff; }

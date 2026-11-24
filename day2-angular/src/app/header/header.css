@@ -1,0 +1,16 @@
+ p { margin: 0; }
+
+:host {
+  display: block;
+  padding: 40px 48px 34px;
+  color: white;
+  background: linear-gradient(115deg, #102d65, #1457d9 68%, #3986ef);
+}
+
+p:first-child {
+  font: 800 32px/1.15 'Manrope', sans-serif;
+  letter-spacing: -1px;
+}
+
+p:nth-child(2) { margin-top: 12px; color: #e5efff; font-size: 17px; }
+p:nth-child(3) { margin-top: 5px; color: #c6dcff; font-size: 14px; }
