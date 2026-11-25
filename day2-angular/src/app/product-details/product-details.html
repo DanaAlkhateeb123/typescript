@@ -3,8 +3,17 @@
   <img [src]="productImage" [alt]="productName">
   <h3>{{ productName }}</h3>
   <p>{{ productDescription }}</p>
-  <p>Price: {{ productPrice }}</p>
-  <p>Quantity: {{ quantity }}</p>
+  <p>Price: ${{ productPrice }}</p>
+  <p>Quantity: {{ quantity() }}</p>
   <p>Availability: {{ isAvailable ? 'Available' : 'Unavailable' }}</p>
   <p>Discount: {{ discountPercentage }}%</p>
 </section>
+
+
+
+<button (click)="increase()">Increase Quantity (+)</button>
+<button (click)="decrease()">Decrease Quantity (-)</button>
+<button type="button" (click)="addToCart()" [disabled]="!isAvailable">Add to Cart</button>
+
+
+

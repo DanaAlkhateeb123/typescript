@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
 
 @Component({
   selector: 'app-product-details',
@@ -7,11 +7,28 @@ import { Component } from '@angular/core';
   templateUrl: './product-details.html',
 })
 export class ProductDetails {
-  productName = 'Laptop';
-  productDescription = 'High-performance laptop';
-  productPrice = 750;
-  productImage = 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600';
-  quantity = 1;
-  isAvailable = true;
+  @Input() productName = '';
+  @Input() productDescription = '';
+  @Input() productPrice = 0;
+  @Input() isAvailable = false;
+  @Input() productImage = '';
+  @Output() addToCartEvent = new EventEmitter<{ productName: string; quantity: number }>();
+
+  quantity = signal(1);
   discountPercentage = 10;
+
+  addToCart() {
+    this.addToCartEvent.emit({ productName: this.productName, quantity: this.quantity() });
+  }
+
+  increase() {
+    this.quantity.update(current => current + 1);
+  }
+
+  decrease() {
+    if (this.quantity() > 1) {
+      this.quantity.update(current => current - 1);
+    }
+  }
 }
+
