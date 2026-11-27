@@ -1,0 +1,72 @@
+<main class="shop">
+  <header class="hero">
+    <p class="eyebrow">ELECTROSHOP</p>
+    <h1>Find your next favorite</h1>
+  </header>
+
+  <section class="categories">
+    <span>All Products</span>
+    <span>Electronics</span>
+    <span>Accessories</span>
+  </section>
+
+  @if (selectedCategory === 'All Products') {
+    <p class="category-message">Showing all products in our shop.</p>
+  } @else if (selectedCategory === 'Electronics') {
+    <p class="category-message">Explore our electronics collection.</p>
+  } @else if (selectedCategory === 'Accessories') {
+    <p class="category-message">Explore accessories for your devices.</p>
+  }
+
+  <section class="product-grid">
+    @for (product of products; track product.id) {
+      <article class="product-card"
+        [ngClass]="{
+          'discount-card': product.discount > 0,
+          'available-card': product.isAvailable,
+          'unavailable-card': !product.isAvailable,
+          'premium-card': product.price > 500
+        }"
+        [ngStyle]="{ opacity: product.isAvailable ? '1' : '0.58' }">
+        <div class="image-wrap">
+          <img [src]="product.image" [alt]="product.name">
+          @if (product.discount > 0) { <span class="sale">-{{ product.discount }}%</span> }
+          @if (product.price > 500) { <span class="premium-label">Premium</span> }
+        </div>
+        <div class="product-info">
+          <p class="category">{{ product.category }}</p>
+          <h2>{{ product.name }}</h2>
+          <p class="price" [ngStyle]="{
+            color: product.discount > 0 ? '#d94b40' : '#222',
+            fontSize: product.price > 500 ? '1.35rem' : '1.1rem'
+          }">{{ product.price }} JD</p>
+          @if (product.isAvailable) {
+            <p class="stock in-stock">Available</p>
+          } @else {
+            <p class="stock out-stock">Out of Stock</p>
+          }
+          @if (product.discount > 0) {
+            <p class="offer">Special Offer</p>
+          } @else {
+            <p class="no-offer">No Discount</p>
+          }
+          @if (product.price > 500) { <p class="premium-text">Premium Product</p> }
+          @if (product.isAvailable) { <button type="button" (click)="buyNow(product.name)">Buy Now</button> }
+        </div>
+      </article>
+    }
+  </section>
+
+  @if (message) { <p class="buy-message" role="status">{{ message }}</p> }
+
+  <section class="order-status">
+    <h2>Your order</h2>
+    @switch (orderStatus) {
+      @case ('Pending') { <p>Your order is waiting for confirmation.</p> }
+      @case ('Processing') { <p>Your order is being prepared.</p> }
+      @case ('Shipped') { <p>Your order has been shipped.</p> }
+      @case ('Delivered') { <p>Your order has been delivered.</p> }
+      @default { <p>Unknown Order Status.</p> }
+    }
+  </section>
+</main>
